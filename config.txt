@@ -1,0 +1,27 @@
+// THIS IS THE CONFIG FILE, SUBJECT TO CHANGE
+
+-Images
+    *.jpg
+    *.png
+    *.gif
+    *.svg
+    *.bmp
+
+-Documents
+    *.pdf
+    *.doc
+    *.docx
+    *.txt
+    *.csv
+    *.html
+    *.md
+
+-Video/Audio
+    *.mp3
+    *.mp4
+    *.wav
+    *.mov
+
+-Programs
+    *.exe
+    *.dll
