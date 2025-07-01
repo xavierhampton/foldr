@@ -1,30 +1,35 @@
 import os
 
 class Parser:
-    def __init__(self):
-        self.scriptPath = '../config.txt'
+    #Checks if path exists for config file
+    def __init__(self, scriptPath=None):
+        self.scriptPath = scriptPath
         if not os.path.exists(self.scriptPath):
             raise FileNotFoundError(f"Script file not found: {self.scriptPath}")
-        
-        self.documentStructure = []
     
+    #Runs the script parser, returns a list of tuples with file names and their parent directories
     def run(self):
         return self._parse_script()
 
+    #Private method for parsing script file
     def _parse_script(self):
         with open(self.scriptPath, 'r') as file:
             lines = file.readlines()
 
             res = []
-            current_section = []
+            parent = ""
 
             for line in lines:
-                if line.startswith('/'): continue  # Skip comments
+                # Skip comments
+                if line.startswith('/'): continue  
+
+                #Folders
                 if line.startswith('-'):
-                    if current_section:
-                        res.append(current_section)
-                    current_section = [line.strip()]
-                else:
-                    current_section.append(line.strip())
-                
+                    parent = line.strip().replace('-', '')
+                    
+                #File Placeholders
+                elif (len(line.strip()) > 0):
+                    res.append((line.strip(), parent))
+
             return res
+
