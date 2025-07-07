@@ -1,5 +1,5 @@
 import os
-from foldr.components.script_parser import Parser
+import components.script_parser as sc
 
 #Path to the organization folder
 # This is the folder where all the files and folders will be organized
@@ -19,7 +19,7 @@ class application:
 
         self.root_folder = os.path.dirname(os.path.abspath(__file__))
 
-        self.parser = Parser(self.root_folder + "/config.txt")
+        self.parser = sc.Parser(self.root_folder + "/config.txt")
         self.files = self.parser.run()
 
     # Checks if the folder exists, if not, creates it
