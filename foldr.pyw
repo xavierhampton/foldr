@@ -8,10 +8,12 @@ ORG_PATH = "C:\\Users\\xavie\\Downloads"
 
 # foldr.pyw - Main application file for Foldr
 class application:
+    # Application class for Foldr
+    # This class initializes the application, checks for the organization path,
+
     def __init__(self):
         self.name = "Foldr Application"
 
-        # Check if the organization path exists
         if not os.path.exists(ORG_PATH):
             raise FileNotFoundError(f"Organization path does not exist: {ORG_PATH}")
 
@@ -20,6 +22,8 @@ class application:
         self.parser = Parser(self.root_folder + "/config.txt")
         self.files = self.parser.run()
 
+    # Checks if the folder exists, if not, creates it
+    # Returns True if the folder was created, False if there is error
     def check_folder_exists(self, folder_path):
         if not os.path.exists(self.root_folder + folder_path):
             try:
@@ -29,6 +33,7 @@ class application:
                 raise FileNotFoundError(f"Folder does not exist, folder creation error: {folder_path}")
         return False
 
+    # Runs the application
     def run(self):
         print(f"Running application: {self.name}")
         print(self.files)
