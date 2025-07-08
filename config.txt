@@ -16,7 +16,7 @@
     *.html
     *.md
 
--Video/Audio
+-Video & Audio
     *.mp3
     *.mp4
     *.wav

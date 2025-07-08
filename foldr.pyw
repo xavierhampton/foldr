@@ -26,20 +26,20 @@ class application:
     # Checks if the folder exists, if not, creates it
     # Returns True if the folder was created, False if there is error
     def check_folder_exists(self, folder_path):
-        if not os.path.exists(self.root_folder + folder_path):
+        if not os.path.exists(folder_path):
             try:
-                os.mkdir(self.root_folder + folder_path)
+                os.mkdir(folder_path)
                 return True
             except Exception as e:
-                raise FileNotFoundError(f"Folder does not exist, folder creation error: {folder_path}")
+                raise FileNotFoundError(f"Folder does not exist, folder creation error: {folder_path}, Error: {e}")
         return False
     
     def find_org_folder(self, entry):
         # Finds the organization folder based on the entry name
         # Returns the path to the organization folder
-        for org in self.organization:
+        for org, folder in self.organization:
             if (org.startswith("*.") and entry.lower().endswith(org.lower()[2:])):
-                org_folder = os.path.join(ORG_PATH, org)
+                org_folder = os.path.join(ORG_PATH, folder)
                 if not os.path.exists(org_folder):
                     self.check_folder_exists(org_folder)
                 return org_folder
@@ -53,6 +53,7 @@ class application:
 
         for entry in entries:
             folder = self.find_org_folder(entry)
+            print(folder)
 
         
         print(self.organization)
