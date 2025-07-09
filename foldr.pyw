@@ -53,9 +53,19 @@ class application:
 
         for entry in entries:
             folder = self.find_org_folder(entry)
-            print(folder)
+            if folder is None:
+                print(f"No organization folder found for entry: {entry}")
+                continue
 
-        
+            src_path = os.path.join(ORG_PATH, entry)
+            dest_path = os.path.join(ORG_PATH, folder)
+
+            try: 
+                shutil.move(src_path, dest_path)
+            except Exception as e:
+                print(f"Error moving {src_path} to {dest_path}: {e}")
+                continue
+                
         print(self.organization)
 
 
