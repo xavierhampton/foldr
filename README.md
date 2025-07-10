@@ -16,9 +16,9 @@ For example, it can automatically move all your `.jpg` files into an `Images` fo
 ---
 
 ## 📁 How to use
- - 1) Edit config.txt to choose what file types go into each directory
- - 2) Edit foldr.pyw `ORG_PATH` variable to the path of the folder you wish to organize
- - 3) Run foldr.pyw
+ #### 1) Edit config.txt to choose what file types go into each directory
+ #### 2) Edit foldr.pyw `ORG_PATH` variable to the path of the folder you wish to organize
+ #### 3) Run foldr.pyw
 
 
 
